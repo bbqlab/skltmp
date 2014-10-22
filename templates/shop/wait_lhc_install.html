@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block extra_js%}
+  <script>
+      $(function() {    
+        var secs = 11;
+        setInterval(function() {
+            secs--;
+            $('#countdown').html(secs + ' secondi');
+        }, 1000);
+        setTimeout(function() {
+            window.location = '/shop/gotodashboard';
+        }, 10000);
+      });
+  </script>
+{% endblock %}
+
+{% block main %}
+
+<div class="row">
+    <div class="container" style='min-height:400px'>
+        <h1>Installazione</h1>
+        <h3>Stiamo preparando la vostra installazione, nel giro di <br>
+            pochi secondi potrete accedere alla vostra dashboard.</h3>
+        <p style='font-size:3em; margin-top:50px' id='countdown'>
+        </p>
+
+    </div>
+</div>
+
+{% endblock %}

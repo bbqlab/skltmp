@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block main %}
+
+<div class='onepage'>
+  <div class='row'>
+    <div class='container'>
+      <div class="col-md-7">
+        <img src='{% static "img/ibook.png" %}'>
+      </div>
+
+      <div class="col-md-5">
+        <h1>Il modo più semplice di <b>raggiungere i tuoi clienti</b></h1>
+
+        <h1 class="small">
+          Una Chat Live &egrave; il mezzo pi&ugrave; veloce e
+          personale di coinvolgere i tuoi utenti.
+        </h1>
+        <br>
+        <p class='sub-btn'>
+        <a class='btn btn-default' href='{% url "signup" %}'>Provalo adesso</a>
+          Gratis per 15 giorni, nessuna carta di credito richiesta
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='row secondary-bg'>
+    <div class='container'>
+      <div class="col-md-6">
+        <h1>Cos'e' Skillup Live Chat</h1>
+        <p>
+          Come in un  negozio reale, Skillup Live Chat ti
+          permette di <b>dialogare con i tuoi clienti</b> sulla tua
+          pagina Web. Aiutali a <b>trovare soluzioni</b> e 
+          <b>impressionali</b> con il tuo servizio.<br><br>
+
+          <b>E' facile!</b> Inserisci la nostra live chat nel tuo sito
+          e <b>inizia subito</b> a offrire un moderno ed efficace
+          servizio clienti.
+        </p>
+
+        <a class='btn btn-default' href=''>PERCHE USARE SKILLUP</a>
+      </div>
+
+      <div class="col-md-6">
+        <img src='{% static "img/ui.png" %}'>
+      </div>
+    </div>
+  </div>
+
+  <div class='row secondary-bg'>
+    <div class='container'>
+      <div class="col-md-6">
+        <img src='{% static "img/chat.png" %}'>
+      </div>
+
+      <div class="col-md-6">
+        <h1>La Chat dal vivo è un'ottima alternativa all'email e al telefono </h1>
+        <p>
+          I nostri clienti sono spesso <b>stupiti dalla semplicità</b>
+          di Skillup Live Chat e dalla possibilità di poter
+          gestire più domande nello stesso momento
+
+
+        </p>
+      
+        <a class='btn btn-default' href=''>SCOPRI DI PIU</a>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='container'>
+      <div class="col-md-12 center">
+        
+        <h1>
+          Sul tuo sito ci sono già delle persone<br>
+          <b>che ti stanno aspettando</b>
+
+        </h1>
+        
+        <a class='btn btn-success btn-big' href=''>PROVA LA VERSIONE GRATUITA</a>
+
+        <br><br>
+        oppure
+        <br><br>
+        <a class='btn btn-default btn-big' href=''>SCOPRI PERCHE USARE SKILLUP</a>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock %}
