@@ -6,7 +6,7 @@ import sys
 import requests
 import MySQLdb as mdb
 
-path = '/home/jacko/Projects'
+path = '/home/bbq/Git'
 if path not in sys.path:
     sys.path.append(path)
 
@@ -65,6 +65,7 @@ class DeploymentManager:
         try:
             dst = "%s/%s" % (LHC_DASHBOARD_PATH, self.domain)
             copytree(LHC_PATH, dst)
+            os.system("chgrp -R www-data %s" % dst)
         except Exception, e:
             raise e
 
@@ -77,6 +78,7 @@ class DeploymentManager:
         
         cursor = connection.cursor()
         cursor.execute("CREATE DATABASE %s" % self.domain)
+        print "CREATE DATABASE %s" % self.domain
         cursor.execute("GRANT ALL PRIVILEGES ON `%s`.* to '%s'@'localhost' IDENTIFIED BY '%s'" %
                         (self.domain,
                         settings.LHC_DASHBOARD_DBUSER,

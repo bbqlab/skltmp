@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-from abo.models import Plan
 from skillup.shop.models import *
 from .tasks import deploy_lhc
 
@@ -8,13 +7,12 @@ def install_chat_software(sender, **kwargs):
     print "post save"
     print kwargs
     if kwargs['created']:
-        plan = Plan.objects.get(name="Trial")
         #subscription = Subscription().create(kwargs['instance'], plan)
         print "SENDING SIGNAL"
         deploy_lhc.apply_async([kwargs['instance'].id, 
                                       kwargs['instance'].username, 
                                       kwargs['instance'].password,
-                                      plan.name])
+                                      "test"])
 
 
 def initialize_installation(sender, **kwargs):
