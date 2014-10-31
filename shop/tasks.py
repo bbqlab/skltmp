@@ -38,10 +38,10 @@ def sleeptask(i):
     return i
 
 @app.task(name='shop.tasks.deploy_lhc')
-def deploy_lhc(user_id, domain, password, plan='Trial'):
+def deploy_lhc(user_id, domain, firstname, lastname, email, password, plan='Trial'):
     print "INSIDE CREATING INSTANCE"
     print "user %s domain %s plan %s" % (user_id, domain, plan)
-    manager = DeploymentManager(domain, user_id, password, plan)
+    manager = DeploymentManager(domain, firstname, lastname, email, user_id, password, plan)
     try:
         manager.deploy()
     except Exception, e:
@@ -50,8 +50,11 @@ def deploy_lhc(user_id, domain, password, plan='Trial'):
 
 
 class DeploymentManager:
-    def __init__(self, domain, user_id, password, plan):
+    def __init__(self, domain, firstname, lastname, email, user_id, password, plan):
         self.user_id = user_id
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
         self.domain = domain
         self.plan = plan
         self.password = password
@@ -97,21 +100,24 @@ class DeploymentManager:
 
         requests.post("%s/2" % url, data=data)
 
-        data = {"AdminUsername":"support",
-                "AdminPassword":"antani",
-                "AdminPassword1":"antani",
-                "AdminEmail":"test@test.it",
-                "AdminName":"Mario",
-                "AdminSurname":"Rossi",
-                "DefaultDepartament": "Support"
+        data = {"AdminUsername":self.domain,
+                "AdminPassword":'default',
+                "AdminPassword1":'default',
+                "AdminEmail":self.email,
+                "AdminName":self.firstname,
+                "AdminSurname":self.lastname,
+                "DefaultDepartament": "Supporto"
                 }
+
         requests.post("%s/3" % url, data=data)
 
         post_install_url = "%s/%s/index.php/site_admin/postinstall/postinstall" % (LHC_DASHBOARD_URL, self.domain)
         data = {'title': self.domain.capitalize(), 
                 'secret': settings.LHC_SECRET,
-                'password': '',
+                'password': self.password.split("$")[2],
                 'user_id': ''}
+        print "posting post_install"
+        print data
         requests.post(post_install_url, data=data)
 
     def install_widget(self):
