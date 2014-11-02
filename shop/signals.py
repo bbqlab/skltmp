@@ -10,8 +10,11 @@ def install_chat_software(sender, **kwargs):
         #subscription = Subscription().create(kwargs['instance'], plan)
         print "SENDING SIGNAL"
         deploy_lhc.apply_async([kwargs['instance'].id, 
-                                      kwargs['instance'].username, 
-                                      kwargs['instance'].password,
+                                kwargs['instance'].username, 
+                                kwargs['instance'].first_name,
+                                kwargs['instance'].last_name,
+                                kwargs['instance'].email,
+                                kwargs['instance'].password,
                                       "test"])
 
 
