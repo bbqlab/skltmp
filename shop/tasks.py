@@ -6,7 +6,7 @@ import sys
 import requests
 import MySQLdb as mdb
 
-path = '/home/jacko/Projects'
+path = '/home/bbq/Git'
 if path not in sys.path:
     sys.path.append(path)
 
