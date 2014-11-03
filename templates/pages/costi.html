@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block main %}
+
+<div class='onepage'>
+
+  <div class='row awesome-bg'>
+    <div class='container'>
+      <div class="col-md-12 center">
+        <h1 class='big'>Costi</h1>
+        <h3>
+          Prova la nostra demo gratuita per 15 giorni. <br>
+          Non serve la carta di credito.
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class='row awesome-bg'>
+    <div class='container'>
+      <div class="col-md-3 col-md-offset-2 price basic">
+        <h2 class='title'>BASIC</h2>        
+        <ul class="benefits">
+          <li>Chat <b>illimitate</b></li>
+          <li>1 Agente</li>
+          <li>2 Trigger</li>
+          <li>2 Dipartimenti</li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li class='buy secondary-bg'>
+            <a href='{% url "signup" %}?next=/shop/wait'>Acquista ora</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-md-offset-2 price business">
+        <h2 class='title'>BUSINESS</h2>        
+        <ul class="benefits">
+          <li>
+            Chat <b>illimitate</b>
+          </li>
+          <li>
+            Agenti <b>illimitati</b>
+          </li>
+          <li>
+            Trigger <b>illimitati</b>
+          </li>
+          <li>
+            Dipartimenti <b>illimitati</b>
+          </li>
+          <li>
+            Personalizzazione widget 
+          </li>
+          <li>&nbsp;</li>
+
+          <li class='buy awesome-bg'>
+            <a href='{% url "signup" %}?next=/shop/wait'>Acquista ora</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+{% endblock %}
