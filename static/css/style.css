@@ -183,3 +183,63 @@ h1.secondary {
   color:#2c3e50 !important;
 }
 
+
+.price {
+  background-color:#fff;
+}
+
+.price .title {
+  text-align:center;
+  padding:0px 0px 10px;
+}
+
+.price .benefits {
+  list-style-type:none;
+  padding:0px;
+  text-align:center;
+}
+
+.price .benefits li {
+  padding:10px 0px;
+}
+
+.business .benefits li {
+
+}
+
+.basic .benefits li {
+  color:#888;
+}
+
+
+.business .title{
+  border-bottom:1px dotted #fafafa;
+}
+
+
+.business {
+  background-color:#16a085;
+  color:#fafafa;
+
+}
+
+.basic .title{
+  color:#2c3e5f;
+  border-bottom:1px dotted #2c3e5f;
+  border-bottom:1px dotted #2c3e5f;
+}
+
+.buy a {
+  text-transform:uppercase;
+  font-size:1.2em;
+  color:#fff;
+}
+
+.buy a:hover {
+  text-decoration:none;
+}
+
+.buy a li:hover {
+  cursor:pointer;
+}
+
