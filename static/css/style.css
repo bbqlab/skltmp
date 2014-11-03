@@ -90,6 +90,10 @@ h1.secondary {
   color:#12836d;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .section-number {
   font-size:2.4em;
   border-radius:50%;
