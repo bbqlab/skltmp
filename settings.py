@@ -50,6 +50,7 @@ LANGUAGE_CODE = "en"
 # Supported languages
 _ = lambda s: s
 LANGUAGES = (
+    ('it', _('Italiano')),
     ('en', _('English')),
 )
 
@@ -186,8 +187,9 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     "mezzanine.accounts",
     "post_office",
-    "payments",
-    "skillup.shop"
+    #"payments",
+    "skillup.shop",
+    "chargify"
     #"mezzanine.mobile",
 )
 
