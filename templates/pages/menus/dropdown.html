@@ -1,5 +1,7 @@
-{% load i18n future pages_tags %}
+{% load i18n future pages_tags mezzanine_tags %}
 {% spaceless %}
+
+
 {% if page_branch_in_menu %}
 
 {% if branch_level == 0 %}
@@ -28,8 +30,57 @@
         <li><a href="{% url "logout" %}" class="btn btn-default  btn-account">
          {% trans "Log out" %}</a></li>
     {% else  %}    
-        <li><a href="{% url "login" %}?next=/shop/gotodashboard" class="btn btn-default btn-sm btn-account">
-            <span class="glyphicon glyphicon-log-in"></span> {% trans "Log in" %}</a></li>
+
+        <li>
+            <a type='button' href="#" 
+                    class="btn btn-default btn-sm btn-account dropdown-toggle"
+                    data-toggle="dropdown">
+              <span class="glyphicon glyphicon-log-in"></span> 
+              {% trans "Log in" %}
+            </a>
+
+            <div class="dropdown-menu dropdown-login">
+                <div class='stay_open'>
+                    <h5>Operatore</h5>
+                    <form action="{% url "agentlogin" %}" method='POST'>
+                    {% csrf_token %}
+
+                    {% for field in request.agent_login_form %}
+                        <div class="col-md-3">
+                            SkillUpID
+
+                        </div>
+                        <div class="col-md-8">
+                            {{field}}
+                        </div>
+                    {% endfor %}
+    
+                    </form>
+                    <br><br>
+                    <hr style='display:block;'>
+                    <h5>Manager</h5>
+
+                    <form method="post" action="{% url 'mezzanine.accounts.views.login' %}">
+                    {% csrf_token %}
+                    <div class='col-md-3'>Utente</div>
+                    <div class='col-md-8'>{{ request.main_login_form.username }}</div>
+                    <div class='col-md-3'>Password</div>
+                    <div class='col-md-8'>{{ request.main_login_form.password }}</div>
+
+                    <input type="submit" value="login" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript">
+              $(function() {
+                $('.dropdown-menu .stay_open').click(function(ev) {
+                    ev.stopPropagation();
+                });
+              });   
+            </script>
+        </li>
+
         <li><a href="{% url "signup" %}?next=/shop/wait" class="btn btn-primary btn-sm btn-account">
             <span class="glyphicon glyphicon-edit"></span> {% trans "Provalo" %}</a></li>
     {% endif %}

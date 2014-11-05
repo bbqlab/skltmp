@@ -118,6 +118,14 @@ h1.secondary {
   max-width:100%;
 }
 
+.dropdown-login {
+  background-color:#fff !important;
+  border:1px solid #aeaeae;
+  right:10px !important;
+  padding:10px;
+  min-width: 320px !important;
+}
+
 .login-box {
   background: none repeat scroll 0% 0% #EDEFF1;
   border-radius: 10px;
