@@ -2,4 +2,4 @@ Mezzanine==3.1.9
 celery==3.1.16
 mysql-python==1.2.5
 django-post_office==1.1.1
-django-stripe-payments==2.0.0
+django-chargify=1.0.0
