@@ -6,7 +6,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from skillup.shop.forms import *
 
-
 def profile(request):
     return render_to_response('shop/profile.html', {'user': request.user}, 
             context_instance=RequestContext(request))
@@ -34,8 +33,6 @@ def agent_login(request):
                 return HttpResponseRedirect(path)
             else:
                 not_found = True
-
-
  
     return render(request, 'shop/agent_login.html', {
         'form': form,
