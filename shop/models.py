@@ -8,6 +8,7 @@ class CustomerData(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     company = models.CharField(max_length=200, null=True)
     lhc_user = models.IntegerField(null=True)
+    real_customer = models.BooleanField(default=False)
 
 
 class TrialSubscription(models.Model):

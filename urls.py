@@ -24,6 +24,7 @@ urlpatterns += patterns('',
     # Cartridge URLs.
     url(r"^payments/", include("payments.urls")),
     url(r"^shop/", include("skillup.shop.urls")),
+    url(r"^chargify/", include("chargify.urls")),
     #("^shop/", include("cartridge.shop.urls")),
     #url("^account/orders/$", "cartridge.shop.views.order_history",
     #    name="shop_order_history"),

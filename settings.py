@@ -29,7 +29,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['http://www.skillup.it']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -220,24 +220,24 @@ PAYMENTS_PLANS = {
 
 SUBSCRIPTION_MODEL = 'shop.Subscription'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/tmp/debug.log',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
-}
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    'handlers': {
+#        'file': {
+#            'level': 'DEBUG',
+#            'class': 'logging.FileHandler',
+#            'filename': '/tmp/debug.log',
+#        },
+#    },
+#    'loggers': {
+#        'django.request': {
+#            'handlers': ['file'],
+#            'level': 'INFO',
+#            'propagate': True,
+#        },
+#    },
+#}
 
 
 SESSION_COOKIE_DOMAIN = '.skillup.it'
@@ -374,13 +374,13 @@ except Exception, e:
 #SHOP_HANDLER_ORDER = 'skillup.shop.operations.create_subscription'
 
 LHC_META_DBUSER = 'root'
-LHC_META_DBPASS = 'sarcazzo'
+LHC_META_DBPASS = 'zizzania'
 
 LHC_DASHBOARD_DBHOST = 'localhost'
 LHC_DASHBOARD_DBUSER = 'lhc'
 LHC_DASHBOARD_DBPASS = 'lhc2014'
 
-LHC_SECRET = 'vmwoflkmsdmcds'
+LHC_SECRET = 'vmwoflkmsdmcdssa'
 
 LHC_DASHBOARD_URL = 'http://dashboard.skillup.it/'
 

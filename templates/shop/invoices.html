@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block extra_js%}
+{% endblock %}
+
+{% block main %}
+
+<div class='small-row-padding'>
+  {% include "shop/profile_menu.html" %}
+</div>
+
+{% endblock %}

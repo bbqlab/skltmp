@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block extra_js%}
+{% endblock %}
+
+{% block main %}
+
+<div class='small-row-padding'>
+  {% include "shop/profile_menu.html" %}
+
+  <div class="row">
+      <div class="container">
+        <h2>Informazioni account</h2>
+        <div class='col-md-6'>
+
+          <div class='col-md-4'>
+            <b>Nome</b>
+          </div>
+          <div class='col-md-8'>
+            {{user.first_name}}
+            {{user.last_name}}
+          </div>
+
+          <div class='col-md-4'>
+            <b>Email</b>
+          </div>
+          <div class='col-md-8'>
+            {{user.email}}
+          </div>
+        </div>
+
+        <div class='col-md-6'>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="container">
+        <h2>Sottoscrizione</h2>
+      </div>
+  </div>
+  <div class="row">
+      <div class="container">
+        <h2>Cancella account</h2>
+        <p>
+          Ci dispiace vederti andare via. Una volta che il tuo account sar&agrave; cancellato, tutte le informazioni relative
+          verrano immediatamente e permanentemente cancellate. Se si &egrave in possesso di un account a pagamento non si
+          riceveranno pi&ugrave; ulteriori addebiti.
+        </p>
+        <a class='btn btn-primary'>Cancella Account</a>
+      </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block extra_js%}
+{% endblock %}
+
+{% block main %}
+
+<div class='small-row-padding'>
+  {% include "shop/profile_menu.html" %}
+  
+  <div class="row">
+    <div class="container">
+      <h2>Scegli il pacchetto</h2>
+      <div class='col-md-3 col-md-offset-3'>
+        basic
+      </div>
+      <div class='col-md-3 col-md-offset-1'>
+        business
+      </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="container">
+      <h2>Personalizza il tuo pacchetto</h2>
+      <div class='col-md-6'>
+        <form action='' method='POST'>
+          <div class='row'>
+            <div class='col-md-4'>Pacchetto</div>
+            <div class='col-md-8'>
+              <select name='plan' style='width:100%'>
+                <option value='basic'>Basic</option>
+                <option value='business'>Business</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-md-4'>Agenti</div>
+            <div class='col-md-8'>
+              <input type='number' name='agents' value='1' style='width:100%'>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-4'>Tipo di pagamento</div>
+            <div class='col-md-8'>
+              <select name='payment' style='width:100%'>
+                <option value='2-year'>2 Anni (Risparmia il 30%)</option>
+                <option value='1-year'>1 Anno (Risparmia il 20%)</option>
+                <option value='6-month'>6 Mesi (Risparmia il 10%)</option>
+                <option value='3-month'>3 Mesi (Risparmia il 5%)</option>
+                <option value='1-month' selected>1 Mese</option>
+              </select>
+            </div>
+          </div>
+
+          <div class='separator'></div>
+          
+
+          <div class='row'>
+            <div class='col-md-4'>Prossimo pagamento</div>
+            <div class='col-md-8 align-right'>
+              <b>4 Dicembre</b>
+            </div>
+          </div>
+
+
+          <div class='row'>
+          <div class='col-md-4'>Costo</div>
+          <div class='col-md-8 align-right'>
+            <b>70 &euro;</b>
+          </div>
+          </div>
+
+          <div class='row'>
+          <a class='btn btn-primary' style='width:100%'>Procedi al pagamento</a>
+          </div>
+        </form>
+      </div>
+      <div class='col-md-6'>
+      </div>
+    </div>
+  </div> 
+</div>
+
+{% endblock %}

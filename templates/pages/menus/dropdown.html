@@ -25,6 +25,8 @@
     {% endfor %}
     
     {% if request.user.is_authenticated %}
+        <li><a href="{% url "profile" %}" class="btn btn-primary  btn-account">
+         {% trans "Account" %}</a></li>
         <li><a href="http://dashboard.skillup.it/{{request.user.username}}" class="btn btn-primary btn-account">
          {% trans "Dashboard" %}</a></li>
         <li><a href="{% url "logout" %}" class="btn btn-default  btn-account">
