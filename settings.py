@@ -355,6 +355,8 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 EMAIL_BACKEND = 'post_office.EmailBackend'
 SECRET_KEY = ""
 
+ACCOUNTS_PROFILE_VIEWS_ENABLED = true
+
 
 # Allow any settings to be defined in local_settings.py which should be
 # ignored in your version control system allowing for settings to be
