@@ -11,7 +11,25 @@
 {% block main %}
 
 <div class='small-row-padding'>
+  
   {% include "shop/profile_menu.html" %}
+  <div class='row'>
+    <div class='container'>
+      <h2>Informazioni di fatturazione</h2>
+      <div class='col-md-6'>
+        <div class="form-ul">
+          <form action='' method='POST'>
+            {% csrf_token %}
+            {{form.as_ul}}
+            <li class="separator"></li>
+            <li>
+              <input class='btn btn-primary' type='submit' value='Salva'>
+            </li>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

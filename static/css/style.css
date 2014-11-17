@@ -32,6 +32,11 @@ a {
   color:#fff; 
 }
 
+.transparent-bg {
+  background:transparent !important;
+  color:rgba(0,0,0,0.80) !important;
+}
+
 footer {
   background-color:#293949; 
 }
@@ -138,6 +143,52 @@ h1.secondary {
   right:10px !important;
   padding:10px;
   min-width: 320px !important;
+}
+
+.info-box {
+  background-color:rgba(0,0,0,0.08);
+  padding:20px;
+}
+
+.info-box h3 {
+  margin-top:10px;
+}
+
+.form-ul {
+  list-style-type:none;
+  padding:0;
+}
+
+.separator {
+  margin:20px 0px;
+  border-bottom:1px dotted #aeaeae;
+}
+
+
+.form-ul label {
+  width:35%;
+  margin:10px 0px;
+  padding:0px;
+  font-size:1.1em;
+}
+
+.form-ul input[type=submit] {
+  width:100%;
+  text-transform:uppercase;
+
+}
+
+.form-ul input[type=checkbox] {
+  width:auto !important;
+
+}
+
+
+.form-ul input:not([type=submit]),
+.form-ul textarea,
+.form-ul select {
+  margin:0px 0px;
+  width:64%;
 }
 
 .login-box {
@@ -277,4 +328,36 @@ h1.secondary {
 .nav > li > a:hover, .nav > li > a:focus { 
   background-color:#2c3e50;
   color:#fff;
+}
+
+
+.plan-box {
+  border:5px solid transparent;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.plan-box .price {
+  background: transparent;
+  color:#fafafa;
+  font-size:1.4em;
+}
+
+.plan-box-selected {
+  border:5px solid #aeaeae;
+}
+
+.plan-box-container {
+  margin:5px;
+  text-align:center;
+  padding:10px;
+  color:#fafafa;
+}
+
+.plan-box-basic .plan-box-container {
+  background-color:#16a085;
+}
+
+.plan-box-business .plan-box-container {
+  background-color:#2c3e5f;
 }

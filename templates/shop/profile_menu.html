@@ -1,14 +1,18 @@
 
-{% load i18n mezzanine_tags %}
+{% load i18n mezzanine_tags shop %}
   <div class="row">
       <div class="container">
           <h1>Gestisci il tuo account</h1>
           
           <ul id='profile-menu' class="nav nav-pills nav-justified" role="tablist">
-            <li role="presentation" class="active"><a href="{% url 'profile' %}">Profilo</a></li>
-            <li role="presentation"><a href="{% url 'change_plan' %}">Cambia piano</a></li>
-            <li role="presentation"><a href="{% url 'invoices' %}">Dati fatturazione</a></li>
-            <li role="presentation"><a href="{% url 'billing' %}">Fatture</a></li>
+            <li role="presentation" class="{% current 'profile' %}">
+              <a href="{% url 'profile' %}">Profilo</a></li>
+            <li role="presentation" class="{% current 'change_plan' %}">
+              <a href="{% url 'change_plan' %}">Cambia piano</a></li>
+            <li role="presentation" class="{% current 'billing' %}">
+              <a href="{% url 'billing' %}">Dati fatturazione</a></li>
+            <li role="presentation" class="{% current 'invoices' %}">
+              <a href="{% url 'invoices' %}">Fatture</a></li>
           </ul>
       </div>
   </div>

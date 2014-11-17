@@ -4,8 +4,6 @@ from django.conf import settings
 import hashlib
 import logging
 
-logger = logging.getLogger(__name__)
-
 class LhSHA1PasswordHasher(BasePasswordHasher):
     """
     The SHA1 password hashing algorithm 

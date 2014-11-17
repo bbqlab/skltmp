@@ -3,7 +3,10 @@ from skillup.shop.views import *
 
 
 urlpatterns = patterns('',
+    url(r"^chargify_signup/$", chargify_signup, name='chargify_signup'),
+    url(r"^payment/$", payment, name='payment'),
     url(r"^gotodashboard/$", goto_dashboard),
+    url(r"^checkout/$", checkout, name='checkout'),
     url(r"^profile/$", profile, name='profile'),
     url(r"^changeplan/$", change_plan, name='change_plan'),
     url(r"^invoices/$", invoices, name='invoices'),

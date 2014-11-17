@@ -220,24 +220,46 @@ PAYMENTS_PLANS = {
 
 SUBSCRIPTION_MODEL = 'shop.Subscription'
 
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'handlers': {
-#        'file': {
-#            'level': 'DEBUG',
-#            'class': 'logging.FileHandler',
-#            'filename': '/tmp/debug.log',
-#        },
-#    },
-#    'loggers': {
-#        'django.request': {
-#            'handlers': ['file'],
-#            'level': 'INFO',
-#            'propagate': True,
-#        },
-#    },
-#}
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+        },
+    },
+    'handlers': {
+        'default': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': '/tmp/debug.log',
+            'maxBytes': 1024*1024*5, # 5 MB
+            'backupCount': 5,
+            'formatter':'standard',
+        },  
+        'request_handler': {
+                'level':'DEBUG',
+                'class':'logging.handlers.RotatingFileHandler',
+                'filename': '/tmp/debug_sql.log',
+                'maxBytes': 1024*1024*5, # 5 MB
+                'backupCount': 5,
+                'formatter':'standard',
+        },
+    },
+    'loggers': {
+
+        '': {
+            'handlers': ['default'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        #'django.request': { # Stop SQL debug from logging to main logger
+        #    'handlers': ['request_handler'],
+        #    'level': 'DEBUG',
+        #    'propagate': False
+        #},
+    }
+}
 
 
 SESSION_COOKIE_DOMAIN = '.skillup.it'
@@ -355,7 +377,6 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 EMAIL_BACKEND = 'post_office.EmailBackend'
 SECRET_KEY = ""
 
-ACCOUNTS_PROFILE_VIEWS_ENABLED = true
 
 
 # Allow any settings to be defined in local_settings.py which should be
@@ -380,7 +401,7 @@ LHC_DASHBOARD_DBHOST = 'localhost'
 LHC_DASHBOARD_DBUSER = 'lhc'
 LHC_DASHBOARD_DBPASS = 'lhc2014'
 
-LHC_SECRET = 'vmwoflkmsdmcdssa'
+LHC_SECRET = 'vmwoflkmsdmcds'
 
 LHC_DASHBOARD_URL = 'http://dashboard.skillup.it/'
 

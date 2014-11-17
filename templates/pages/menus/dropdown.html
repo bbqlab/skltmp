@@ -59,18 +59,20 @@
     
                     </form>
                     <br><br>
-                    <hr style='display:block;'>
+                    <div class="separator"></div>
+
                     <h5>Manager</h5>
 
-                    <form method="post" action="{% url 'mezzanine.accounts.views.login' %}">
+                    <form method="post" action="{% url 'mezzanine.accounts.views.login' %}?next=/shop/profile">
                     {% csrf_token %}
                     <div class='col-md-3'>Utente</div>
                     <div class='col-md-8'>{{ request.main_login_form.username }}</div>
                     <div class='col-md-3'>Password</div>
                     <div class='col-md-8'>{{ request.main_login_form.password }}</div>
-
-                    <input type="submit" value="login" />
-                    <input class='btn btn-default' type="hidden" name="next" value="{{ next }}" />
+                    <div class="col-md-12">
+                        <input class='btn btn-default'  style='width:100%' type="submit" value="Login" />
+                    </div>
+                    <input  type="hidden" name="next" value="/shop/profile" />
                     </form>
                 </div>
             </div>

@@ -1,10 +1,21 @@
-{% extends "shop/checkout.html" %}
+{% extends "base.html" %}
 {% load i18n mezzanine_tags %}
 
-{% block fields %}
-{% if request.cart.has_items %}
-{% errors_for form %}
-{% include "shop/includes/payment_fields.html" %}
-{% fields_for form.other_fields %}
-{% endif %}
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block extra_js%}
+{% endblock %}
+
+{% block main %}
+
+<div class='small-row-padding'>
+  {% if status == 'error' %}
+    <h1>Errore nel pagamento</h1>
+  {% else %}
+    <h1>Pagamento avvenuto con successo</h1>
+  {% endif%
+</div>
+
 {% endblock %}

@@ -71,7 +71,7 @@
 
 
     {% nevercache %}
-        {% if messages %}
+        {% if messages and false %}
             <div class="messages">
                 {% for message in messages %}
                 <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">

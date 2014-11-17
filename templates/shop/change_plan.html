@@ -6,9 +6,49 @@
 {% block body_id %}account{% endblock %}
 
 {% block extra_js%}
+<script>
+  var selected_plan = 'basic';
+  $(function() {
+    function select_plan(box) {
+      box = $(box);
+      var plan = box.attr('data-plan');
+
+      $('.plan-box-' + selected_plan).removeClass('plan-box-selected');
+      $('.plan-box-' + plan).addClass('plan-box-selected');
+
+      $('select[name=plan]').val(plan);
+      selected_plan = plan;
+      update_bills();
+    }
+
+    function update_bills() {
+      var plan = $('.plan-box-selected').attr('data-plan');
+      var price = parseInt($('.price', '.plan-box-' + plan).html());
+      var agents = parseInt($('input[name=agents]').val());
+      var months = parseInt($('select[name=payment_months]').val());
+      $('.total-price').html(price*agents);
+
+      var due_date = new Date();
+      due_date.setDate(due_date.getDate() + (30*months)); 
+      $('.next-due').html(due_date.getDate()+" "+due_date.getMonth()+" "+(due_date.getFullYear()));
+      $('.next-due').html(due_date.toLocaleString().split(" ")[0]);
+    }
+
+    $('.plan-box').click(function() {select_plan(this)});
+    $('select[name=plan]').change(function() {
+       select_plan($('.plan-box-'+$(this).val())[0]);
+    });
+    $('input[name=agents]').change(update_bills);
+    $('select[name=payment_months]').change(update_bills);
+
+    $('.plan-box-business').trigger('click');
+
+  });
+</script>
 {% endblock %}
 
 {% block main %}
+
 
 <div class='small-row-padding'>
   {% include "shop/profile_menu.html" %}
@@ -16,20 +56,29 @@
   <div class="row">
     <div class="container">
       <h2>Scegli il pacchetto</h2>
-      <div class='col-md-3 col-md-offset-3'>
-        basic
+      <div class='col-md-3 col-md-offset-3 plan-box plan-box-basic' data-plan='basic'>
+        <div class='plan-box-container'>
+          <h4>Basic<h4>
+          <div class='center'><span class='price'>10</span> &euro;/mese<br>per agente</div>
+        </div>
       </div>
-      <div class='col-md-3 col-md-offset-1'>
-        business
+      <div class='col-md-3 col-md-offset-1 plan-box plan-box-business' data-plan='business'>
+        <div class='plan-box-container'>
+          <h4>Business<h4>
+          <div class='center'><span class='price'>20</span> &euro;/mese<br>per agente</div>
+        </div>
       </div>
+      
     </div>
   </div> 
 
   <div class="row">
     <div class="container">
       <h2>Personalizza il tuo pacchetto</h2>
+
       <div class='col-md-6'>
-        <form action='' method='POST'>
+        <form action="{% url 'checkout' %}" method='GET'>
+
           <div class='row'>
             <div class='col-md-4'>Pacchetto</div>
             <div class='col-md-8'>
@@ -50,12 +99,14 @@
           <div class='row'>
             <div class='col-md-4'>Tipo di pagamento</div>
             <div class='col-md-8'>
-              <select name='payment' style='width:100%'>
-                <option value='2-year'>2 Anni (Risparmia il 30%)</option>
-                <option value='1-year'>1 Anno (Risparmia il 20%)</option>
-                <option value='6-month'>6 Mesi (Risparmia il 10%)</option>
-                <option value='3-month'>3 Mesi (Risparmia il 5%)</option>
-                <option value='1-month' selected>1 Mese</option>
+              <select name='payment_months' style='width:100%'>
+                <!--
+                <option value='24'>2 Anni (Risparmia il 30%)</option>
+                <option value='12'>1 Anno (Risparmia il 20%)</option>
+                -->
+                <option value='6'>6 Mesi (Risparmia il 10%)</option>
+                <option value='3'>3 Mesi (Risparmia il 5%)</option>
+                <option value='1' selected>1 Mese</option>
               </select>
             </div>
           </div>
@@ -66,7 +117,7 @@
           <div class='row'>
             <div class='col-md-4'>Prossimo pagamento</div>
             <div class='col-md-8 align-right'>
-              <b>4 Dicembre</b>
+              <b class='next-due'></b>
             </div>
           </div>
 
@@ -74,17 +125,16 @@
           <div class='row'>
           <div class='col-md-4'>Costo</div>
           <div class='col-md-8 align-right'>
-            <b>70 &euro;</b>
+            <b><span class='total-price'>70</span> &euro;</b>
           </div>
           </div>
 
           <div class='row'>
-          <a class='btn btn-primary' style='width:100%'>Procedi al pagamento</a>
+              <input type='submit' class='btn btn-primary' style='width:100%' value='Procedi al pagamento'>
           </div>
         </form>
       </div>
-      <div class='col-md-6'>
-      </div>
+
     </div>
   </div> 
 </div>
